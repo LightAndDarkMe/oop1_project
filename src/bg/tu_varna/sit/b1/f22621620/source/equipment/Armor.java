@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.b1.f22621620.source.equipment;
 
 public enum Armor {
+    NONE ("No Armor", 0),
     LEATHERARMOR ("Leather Armor", 0.30),
     STUDDEDLEATHERARMOR ("Studded Leather Armor", 0.35),
     CHAINSHIRT ("Chain Shirt", 0.40),

@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.b1.f22621620.source.character.inventory;
+package bg.tu_varna.sit.b1.f22621620.source.characters.playercharacter.inventory;
 
 import bg.tu_varna.sit.b1.f22621620.source.equipment.Armor;
 import bg.tu_varna.sit.b1.f22621620.source.equipment.Weapon;
@@ -10,9 +10,9 @@ public class Inventory {
     private Spell spell;
 
     public Inventory() {
-        armor = null;
+        armor = Armor.NONE;
         weapon = Weapon.DAGGER;
-        spell = Spell.Firebolt;
+        spell = Spell.FIREBOLT;
     }
 
     public Armor getArmor() {
