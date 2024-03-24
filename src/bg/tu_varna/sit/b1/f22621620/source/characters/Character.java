@@ -28,4 +28,18 @@ public abstract class Character {
     public void setHealth(int health) {
         this.health = health;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Stats: ")
+                .append("\n")
+                .append("Strength: ")
+                .append(strength)
+                .append(" | Spellcasting Ability: ")
+                .append(spellcastingAbility)
+                .append(" | Health: ")
+                .append(health)
+                .toString();
+    }
 }

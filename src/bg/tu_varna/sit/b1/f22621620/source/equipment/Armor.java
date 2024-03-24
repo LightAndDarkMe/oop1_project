@@ -27,4 +27,14 @@ public enum Armor {
     public double getArmorClass() {
         return armorClass;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Armor: ")
+                .append(armor)
+                .append("; Armor Class: ")
+                .append(armorClass * 100)
+                .toString();
+    }
 }

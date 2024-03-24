@@ -33,4 +33,12 @@ public enum CharacterClass {
     public int getHealth() {
         return health;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Class: ")
+                .append(characterClass)
+                .toString();
+    }
 }

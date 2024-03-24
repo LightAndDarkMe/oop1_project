@@ -34,4 +34,14 @@ public enum Weapon {
     public double getDamage() {
         return damage;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Weapon: ")
+                .append(weapon)
+                .append("; Damage: ")
+                .append(damage * 100)
+                .toString();
+    }
 }

@@ -21,4 +21,24 @@ public class Dragon extends Character {
         setSpellcastingAbility(15 + (level*10));
         setHealth(40 + (level*10));
     }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public double getArmorClass() {
+        return armorClass;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Monster: Dragon ")
+                .append(level)
+                .append("\n")
+                .append(super.toString())
+                .append("\nArmor Class: ")
+                .append(armorClass * 100)
+                .toString();
+    }
 }

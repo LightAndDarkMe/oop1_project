@@ -38,4 +38,17 @@ public class Inventory {
     public void setSpell(Spell spell) {
         this.spell = spell;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Inventory: ")
+                .append("\n")
+                .append(armor)
+                .append(" | ")
+                .append(weapon)
+                .append(" | ")
+                .append(spell)
+                .toString();
+    }
 }
