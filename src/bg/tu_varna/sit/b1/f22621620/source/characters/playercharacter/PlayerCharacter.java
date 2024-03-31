@@ -14,7 +14,8 @@ public class PlayerCharacter extends Character {
         this.characterClass = characterClass;
         setStrength(characterClass.getStrength());
         setSpellcastingAbility(characterClass.getSpellcastingAbility());
-        setHealth(characterClass.getHealth());
+        setMaxHealth(characterClass.getHealth());
+        setCurrentHealth(characterClass.getHealth());
         this.level = 1;
     }
 
@@ -28,6 +29,32 @@ public class PlayerCharacter extends Character {
 
     public int getLevel() {
         return level;
+    }
+
+//    Fix Later!!!
+    public void levelUp() {
+        level++;
+        for (int i = 0; i < 6; i++) {
+            System.out.println("Choose which stat to level up by 5 points: (STR / ABI / HP)");
+            //read the value - not relevant for now; fix later
+            String choice = "";
+            switch (choice) {
+                case "STR" -> setStrength(getStrength() + 5);
+                case "ABI" -> setSpellcastingAbility(getSpellcastingAbility() + 5);
+                case "HP" -> setMaxHealth(getMaxHealth() + 5);
+                default -> {
+                    System.out.println("This is not a viable option, choose from: (STR / ABI / HP)");
+                    i--;
+                }
+            }
+        }
+        setCurrentHealth(getMaxHealth());
+    }
+
+    public void creatureKill() {
+        if(getCurrentHealth() < getMaxHealth() / 2) {
+            setCurrentHealth(getMaxHealth() / 2);
+        }
     }
 
     @Override

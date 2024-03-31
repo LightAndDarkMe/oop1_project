@@ -3,7 +3,8 @@ package bg.tu_varna.sit.b1.f22621620.source.characters;
 public abstract class Character {
     private int strength;
     private int spellcastingAbility;
-    private int health;
+    private int maxHealth;
+    private int currentHealth;
 
     public int getStrength() {
         return strength;
@@ -21,12 +22,20 @@ public abstract class Character {
         this.spellcastingAbility = spellcastingAbility;
     }
 
-    public int getHealth() {
-        return health;
+    public int getMaxHealth() {
+        return maxHealth;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
+    public int getCurrentHealth() {
+        return currentHealth;
+    }
+
+    public void setCurrentHealth(int currentHealth) {
+        this.currentHealth = currentHealth;
     }
 
     @Override
@@ -38,8 +47,10 @@ public abstract class Character {
                 .append(strength)
                 .append(" | Spellcasting Ability: ")
                 .append(spellcastingAbility)
-                .append(" | Health: ")
-                .append(health)
+                .append(" | Max Health: ")
+                .append(maxHealth)
+                .append(" | Current Health: ")
+                .append(currentHealth)
                 .toString();
     }
 }

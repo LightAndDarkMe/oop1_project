@@ -11,7 +11,8 @@ public class Dragon extends Character {
         armorClass = 0.15;
         setStrength(25);
         setSpellcastingAbility(25);
-        setHealth(50);
+        setMaxHealth(50);
+        setCurrentHealth(50);
     }
 
     public Dragon(int level) {
@@ -19,7 +20,8 @@ public class Dragon extends Character {
         armorClass = 0.05 + (level*0.10);
         setStrength(15 + (level*10));
         setSpellcastingAbility(15 + (level*10));
-        setHealth(40 + (level*10));
+        setMaxHealth(40 + (level*10));
+        setCurrentHealth(40 + (level*10));
     }
 
     public int getLevel() {
