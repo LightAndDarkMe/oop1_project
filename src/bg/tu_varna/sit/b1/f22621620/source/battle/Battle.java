@@ -17,7 +17,6 @@ public class Battle implements Combat, EndGame {
         this.dragon = dragon;
     }
 
-//    Add option to visualize how much damage you dealt, hps and stuff of that nature
     @Override
     public void combat() {
         Random coinFlip = new Random();
@@ -33,24 +32,22 @@ public class Battle implements Combat, EndGame {
                 String choice = "";
                 switch (choice) {
                     case "Melee" -> {
-                        dragon.setCurrentHealth(
-                                (int) (dragon.getCurrentHealth() - (
-                                        (playerCharacter.getStrength()
-                                                * (playerCharacter.getInventory().getWeapon().getDamage()) + 1)
-                                                * (1 - dragon.getArmorClass()))
-                                ));
+                        int damageDealt = (int) (playerCharacter.getStrength() * (playerCharacter.getInventory().getWeapon().getDamage() + 1));
+                        System.out.println("With Melee attack you are dealing: " + damageDealt + " damage");
+                        int damageAfterCalculation = (int) (damageDealt * (1 - dragon.getArmorClass()));
+                        System.out.println("After the dragon's protection you dealt: " + damageAfterCalculation + " damage");
+                        dragon.setCurrentHealth((dragon.getCurrentHealth() - damageAfterCalculation));
                         if (dragon.getCurrentHealth() <= 0) {
                             playerCharacter.creatureKill();
                             return;
                         }
                     }
                     case "Spell" -> {
-                        dragon.setCurrentHealth(
-                                (int) (dragon.getCurrentHealth() - (
-                                        (playerCharacter.getSpellcastingAbility()
-                                                * (playerCharacter.getInventory().getSpell().getDamage()) + 1)
-                                                * (1 - dragon.getArmorClass()))
-                                ));
+                        int damageDealt = (int) (playerCharacter.getSpellcastingAbility() * (playerCharacter.getInventory().getSpell().getDamage()) + 1);
+                        System.out.println("With Spell attack you are dealing: " + damageDealt + " damage");
+                        int damageAfterCalculation = (int) (damageDealt * (1 - dragon.getArmorClass()));
+                        System.out.println("After the dragon's protection you dealt: " + damageAfterCalculation + " damage");
+                        dragon.setCurrentHealth((dragon.getCurrentHealth() - damageAfterCalculation));
                         if (dragon.getCurrentHealth() <= 0) {
                             playerCharacter.creatureKill();
                             return;
@@ -65,28 +62,25 @@ public class Battle implements Combat, EndGame {
             }
             else {
                 System.out.println("Dragon's turn");
-                //fix this, get his option, blah blah
                 int flip = coinFlip.nextInt(2);
                 switch (flip) {
                     case 0 -> {
-                        playerCharacter.setCurrentHealth(
-                                (int) (playerCharacter.getCurrentHealth() - (
-                                        dragon.getStrength()
-                                        * (1 - playerCharacter.getInventory().getArmor().getArmorClass())
-                                        )
-                        ));
+                        int damageDealt = dragon.getStrength();
+                        System.out.println("With Melee attack the dragon is dealing: " + damageDealt + " damage");
+                        int damageAfterCalculation = (int) (damageDealt * (1 - playerCharacter.getInventory().getArmor().getArmorClass()));
+                        System.out.println("After your armor's protection the dragon dealt: " + damageAfterCalculation + " damage");
+                        playerCharacter.setCurrentHealth((playerCharacter.getCurrentHealth() - damageAfterCalculation));
                         if (playerCharacter.getCurrentHealth() <= 0) {
                             EndGame();
                             return;
                         }
                     }
                     case 1 -> {
-                        playerCharacter.setCurrentHealth(
-                                (int) (playerCharacter.getCurrentHealth() - (
-                                        dragon.getSpellcastingAbility()
-                                                * (1 - playerCharacter.getInventory().getArmor().getArmorClass())
-                                )
-                                ));
+                        int damageDealt = dragon.getSpellcastingAbility();
+                        System.out.println("With Spell attack the dragon is dealing: " + damageDealt + " damage");
+                        int damageAfterCalculation = (int) (damageDealt * (1 - playerCharacter.getInventory().getArmor().getArmorClass()));
+                        System.out.println("After your armor's protection the dragon dealt: " + damageAfterCalculation + " damage");
+                        playerCharacter.setCurrentHealth((playerCharacter.getCurrentHealth() - damageAfterCalculation));
                         if (playerCharacter.getCurrentHealth() <= 0) {
                             EndGame();
                             return;
