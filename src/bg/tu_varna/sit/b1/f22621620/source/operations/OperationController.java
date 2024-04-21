@@ -1,6 +1,10 @@
 package bg.tu_varna.sit.b1.f22621620.source.operations;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
 public class OperationController {
+    private static File filePath = null;
     public static void execute(String operation) {
         if (operation.isBlank()) {
             return;
@@ -22,9 +26,30 @@ public class OperationController {
 
         try {
             switch (Operation.valueOf(arg.toUpperCase())) {
-                case OPEN -> System.out.println("OPEN.\n" + Operation.OPEN.getDescription());
-                case CLOSE -> System.out.println("CLOSE.\n" + Operation.CLOSE.getDescription());
-                case SAVE -> System.out.println("SAVE.\n" + Operation.SAVE.getDescription());
+                case OPEN -> {
+                    String fileName = args[1];
+                    //Fix implementation when you make the xml files
+                    if (!(fileName.equals(".xml"))) {
+                        throw new FileNotFoundException("File does not exist!");
+                    }
+                    filePath = new File(fileName);
+                    System.out.println("File " + fileName + " opened successfully!");
+                }
+                case CLOSE -> {
+                    filePath = null;
+                }
+                case SAVE -> {
+                    if (filePath == null) {
+                        throw new FileNotFoundException("File does not exist!");
+                    }
+                    switch (filePath.getName()) {
+                        //Fix implementation when you make the xml files
+                        case ".xml" -> {}
+                        default -> {
+                            System.out.println("File not found!");
+                        }
+                    }
+                }
                 case SAVE_AS -> System.out.println("SAVE_AS.\n" + Operation.SAVE_AS.getDescription());
                 case HELP -> {
                     for (Operation commandValue : Operation.values()) {
@@ -38,8 +63,10 @@ public class OperationController {
             }
 
 
-        } catch (IllegalArgumentException ex) {
+        } catch (IllegalArgumentException e) {
             System.out.println("INVALID OPERATION! Try again.");
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
