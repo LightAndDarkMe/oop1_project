@@ -1,10 +1,37 @@
 package bg.tu_varna.sit.b1.f22621620.source.operations;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import bg.tu_varna.sit.b1.f22621620.source.operations.factory.OperationFactory;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class OperationController {
-    private static File filePath = null;
+    private static Map<Operation, OperationFactory> operations = new HashMap<>();
+
+    static {
+        operations.put(Operation.OPEN, OperationFactory.getInstance());
+        operations.put(Operation.EXIT, OperationFactory.getInstance());
+        operations.put(Operation.CLOSE, OperationFactory.getInstance());
+        operations.put(Operation.SAVE, OperationFactory.getInstance());
+        operations.put(Operation.SAVE_AS, OperationFactory.getInstance());
+        operations.put(Operation.HELP, OperationFactory.getInstance());
+    }
+
+    public static void execute(String operation) {
+        //Major confusion, will fix later
+        List<String> args = Arrays.stream(operation.split(" ")).toList();
+
+        try {
+            OperationFactory.getInstance().getCommand(Operation.valueOf(operation), args).execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+/*
     public static void execute(String operation) {
         if (operation.isBlank()) {
             return;
@@ -69,4 +96,4 @@ public class OperationController {
             System.out.println(e.getMessage());
         }
     }
-}
+ */
