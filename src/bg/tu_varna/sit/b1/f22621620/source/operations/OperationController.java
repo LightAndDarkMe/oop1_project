@@ -20,80 +20,62 @@ public class OperationController {
     }
 
     public static void execute(String operation) {
-        //Major confusion, will fix later
         List<String> args = Arrays.stream(operation.split(" ")).toList();
 
         try {
-            OperationFactory.getInstance().getCommand(Operation.valueOf(operation), args).execute();
+            operation = parser(operation);
+
+            if (operation == null) {
+                return;
+            }
+
+            if (!check(operation)) {
+                throw new Exception("Operation doesn't exist! Type \"help\" for all operations.");
+            }
+
+            int index = (operation.startsWith("SAVE_AS") ? 2 : 1);
+
+            args = args.subList(index, args.size());
+            Operation executable = Operation.valueOf(operation);
+            operations.get(executable).getOperation(executable, args).execute();
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-}
 
-/*
-    public static void execute(String operation) {
-        if (operation.isBlank()) {
-            return;
+    private static String parser(String input) {
+        if (input.isBlank()) {
+            return null;
         }
 
-        String[] args = operation.split(" ");
+        String[] args = input.split(" ");
         String arg = args[0].toLowerCase();
-//        Will be extended later
+
         switch (arg) {
-            case "save":
+            case "save" -> {
                 if (args.length == 1) {
                     break;
                 }
                 if (args[1].equals("as")) {
                     arg += "_" + args[1].toLowerCase();
                 }
-                break;
-        }
-
-        try {
-            switch (Operation.valueOf(arg.toUpperCase())) {
-                case OPEN -> {
-                    String fileName = args[1];
-                    //Fix implementation when you make the xml files
-                    if (!(fileName.equals(".xml"))) {
-                        throw new FileNotFoundException("File does not exist!");
-                    }
-                    filePath = new File(fileName);
-                    System.out.println("File " + fileName + " opened successfully!");
-                }
-                case CLOSE -> {
-                    filePath = null;
-                }
-                case SAVE -> {
-                    if (filePath == null) {
-                        throw new FileNotFoundException("File does not exist!");
-                    }
-                    switch (filePath.getName()) {
-                        //Fix implementation when you make the xml files
-                        case ".xml" -> {}
-                        default -> {
-                            System.out.println("File not found!");
-                        }
-                    }
-                }
-                case SAVE_AS -> System.out.println("SAVE_AS.\n" + Operation.SAVE_AS.getDescription());
-                case HELP -> {
-                    for (Operation commandValue : Operation.values()) {
-                        System.out.printf("%-20s%s\n", commandValue.getOperation().toUpperCase(), commandValue.getDescription());
-                    }
-                }
-                case EXIT -> {
-                    System.out.println("EXIT.\n" + Operation.EXIT.getDescription());
-                    System.exit(0);
-                }
             }
-
-
-        } catch (IllegalArgumentException e) {
-            System.out.println("INVALID OPERATION! Try again.");
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
         }
+
+        return arg.toUpperCase();
     }
- */
+
+    private static Boolean check(String input) {
+        for (Operation operation : Operation.values()) {
+            String operationTest = operation.getOperation();
+            if (input.contains("_")) {
+                operationTest = operationTest.replace(" ", "_");
+            }
+            if (operationTest.equalsIgnoreCase(input)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}

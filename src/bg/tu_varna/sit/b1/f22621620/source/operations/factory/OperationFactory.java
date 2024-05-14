@@ -18,7 +18,7 @@ public class OperationFactory {
         return instance;
     }
 
-    public ExecutableOperation getCommand(Operation operation, List<String> args) {
+    public ExecutableOperation getOperation(Operation operation, List<String> args) {
         return switch (operation) {
             case OPEN -> new Open(args);
             case CLOSE -> new Close();

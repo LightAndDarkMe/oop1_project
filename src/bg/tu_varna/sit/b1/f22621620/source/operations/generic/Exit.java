@@ -5,10 +5,7 @@ import bg.tu_varna.sit.b1.f22621620.source.operations.interfaces.ExecutableOpera
 
 public class Exit implements ExecutableOperation {
     @Override
-    public void execute() throws Exception {
-        if (AppData.getInstance().getFile() != null) {
-            AppData.getInstance().unload();
-        }
+    public void execute() {
         System.exit(0);
     }
 }

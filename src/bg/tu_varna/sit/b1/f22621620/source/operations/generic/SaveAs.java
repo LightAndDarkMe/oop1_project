@@ -17,7 +17,7 @@ public class SaveAs implements ExecutableOperation {
     }
 
     @Override
-    public void execute() throws ParserConfigurationException, FileNotFoundException {
+    public void execute() throws Exception {
         AppData.getInstance().save(new File(PATH.concat(args.get(0))));
         System.out.println("File " + args.get(0) + " saved successfully!");
     }

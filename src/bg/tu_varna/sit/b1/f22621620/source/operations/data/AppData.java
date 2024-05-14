@@ -5,6 +5,7 @@ import bg.tu_varna.sit.b1.f22621620.source.operations.interfaces.AppDataManager;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Objects;
 
 public class AppData {
     private static AppData instance = null;
@@ -24,6 +25,10 @@ public class AppData {
         return file;
     }
 
+    public void setFile(File file) {
+        this.file = file;
+    }
+
     public void load(File file) throws Exception {
         this.file = file;
         updateAppDataManager();
@@ -32,11 +37,13 @@ public class AppData {
 
     public void unload() throws Exception {
         appDataManager.unload();
-        this.file = null;
-        appDataManager = null;
     }
 
-    public void save(File file) throws FileNotFoundException, ParserConfigurationException {
+    public void save(File file) throws Exception {
+        if (Objects.isNull(file)) {
+            throw new Exception("No file open!");
+        }
+
         switch (this.file.getName()) {
             case ".xml" -> {
 
