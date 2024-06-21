@@ -6,7 +6,6 @@ import bg.tu_varna.sit.b1.f22621620.source.files.interfaces.Readable;
 import bg.tu_varna.sit.b1.f22621620.source.operations.data.GameData;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;

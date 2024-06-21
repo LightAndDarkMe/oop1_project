@@ -5,10 +5,7 @@ import bg.tu_varna.sit.b1.f22621620.source.battle.interfaces.EndGame;
 import bg.tu_varna.sit.b1.f22621620.source.characters.nonplayercharacter.Dragon;
 import bg.tu_varna.sit.b1.f22621620.source.characters.playercharacter.PlayerCharacter;
 import bg.tu_varna.sit.b1.f22621620.source.dice.Dice;
-import bg.tu_varna.sit.b1.f22621620.source.operations.Operation;
-import bg.tu_varna.sit.b1.f22621620.source.operations.OperationController;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Battle implements Combat, EndGame {
@@ -66,8 +63,7 @@ public class Battle implements Combat, EndGame {
                     }
                 }
                 turnPriority = 0;
-            }
-            else {
+            } else {
                 System.out.println("Dragon's turn");
                 int rolled = dice.rollDice(2);
                 switch (rolled) {

@@ -6,11 +6,10 @@ import bg.tu_varna.sit.b1.f22621620.source.operations.interfaces.ExecutableOpera
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
 public class Open implements ExecutableOperation {
     private final String DEFAULT_PATH = ".\\src\\main\\java\\bg\\tu_varna\\sit\\b1\\f22621620\\source\\files\\".replace("\\", File.separator);
-    private List<String> args;
+    private final List<String> args;
 
     public Open(List<String> args) {
         this.args = args;

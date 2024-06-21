@@ -8,11 +8,11 @@ public class Dragon extends Character {
 
     public Dragon(int level) {
         this.level = level;
-        armorClass = 0.05 + (level*0.10);
-        setStrength(15 + (level*10));
-        setSpellcastingAbility(15 + (level*10));
-        setMaxHealth(40 + (level*10));
-        setCurrentHealth(40 + (level*10));
+        armorClass = 0.05 + (level * 0.10);
+        setStrength(15 + (level * 10));
+        setSpellcastingAbility(15 + (level * 10));
+        setMaxHealth(40 + (level * 10));
+        setCurrentHealth(40 + (level * 10));
     }
 
     public int getLevel() {
@@ -25,13 +25,12 @@ public class Dragon extends Character {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        return stringBuilder.append("Monster: Dragon ")
-                .append(level)
-                .append("\n")
-                .append(super.toString())
-                .append("\nArmor Class: ")
-                .append(armorClass * 100)
-                .toString();
+        String stringBuilder = "Monster: Dragon " +
+                level +
+                "\n" +
+                super.toString() +
+                "\nArmor Class: " +
+                armorClass * 100;
+        return stringBuilder;
     }
 }

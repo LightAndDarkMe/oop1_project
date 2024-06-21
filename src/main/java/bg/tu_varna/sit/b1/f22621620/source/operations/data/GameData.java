@@ -5,7 +5,6 @@ import bg.tu_varna.sit.b1.f22621620.source.files.read.Reader;
 import bg.tu_varna.sit.b1.f22621620.source.files.write.Writer;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Objects;
 
 public class GameData {
@@ -13,7 +12,8 @@ public class GameData {
     private File file = null;
     private Field currentField;
 
-    private GameData() {}
+    private GameData() {
+    }
 
     public static GameData getInstance() {
         if (instance == null) {

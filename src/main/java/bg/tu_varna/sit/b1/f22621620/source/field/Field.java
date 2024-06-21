@@ -1,10 +1,8 @@
 package bg.tu_varna.sit.b1.f22621620.source.field;
 
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
-public class Field{
+public class Field {
     private List<String> grid;
     private final int x;
     private final int y;

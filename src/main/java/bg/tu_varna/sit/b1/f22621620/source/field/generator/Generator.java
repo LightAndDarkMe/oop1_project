@@ -3,6 +3,7 @@ package bg.tu_varna.sit.b1.f22621620.source.field.generator;
 import bg.tu_varna.sit.b1.f22621620.source.field.Field;
 import bg.tu_varna.sit.b1.f22621620.source.field.generator.interfaces.GenerateLevel;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Generator implements GenerateLevel {
@@ -27,35 +28,44 @@ public class Generator implements GenerateLevel {
         Random diceRoll = new Random();
         //Char Array => To List<String>
         char[][] grid = new char[x][y];
-        grid[0][0] = 'P';
-        grid[x-1][y-1] = 'X';
-        int treasuresCount = treasures;
-        int monstersCount = monsters;
+        int treasuresCount = 0;
+        int monstersCount = 0;
 
-        for (int i = 1; i < x - 1; i++) {
-            for (int j = 1; j < y - 1; j++) {
-                int value = diceRoll.nextInt(5);
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                int value = diceRoll.nextInt();
+                value = (value < 0) ? value * -1 : value;
+                value %= 6;
                 switch (value) {
-                    case 0,1,2 -> {
+                    case 0, 1, 2, 3 -> {
                         grid[i][j] = '.';
                     }
-                    case 3,4 -> {
+                    case 4 -> {
                         grid[i][j] = '#';
                     }
                     case 5 -> {
-                        int coinFlip = diceRoll.nextInt(2);
+                        int coinFlip = diceRoll.nextInt();
+                        coinFlip = (coinFlip < -1) ? coinFlip * -1 : coinFlip;
+                        coinFlip %= 21;
                         switch (coinFlip) {
                             case 0 -> {
                                 if (treasuresCount <= treasures) {
                                     grid[i][j] = 'T';
                                     treasuresCount++;
+                                } else {
+                                    grid[i][j] = '.';
                                 }
                             }
                             case 1 -> {
                                 if (monstersCount <= monsters) {
                                     grid[i][j] = 'M';
                                     monstersCount++;
+                                } else {
+                                    grid[i][j] = '#';
                                 }
+                            }
+                            default -> {
+                                grid[i][j] = '.';
                             }
                         }
                     }
@@ -63,26 +73,41 @@ public class Generator implements GenerateLevel {
             }
         }
 
+        grid[0][0] = 'P';
+        grid[x - 1][y - 1] = 'X';
+
         if (treasuresCount < treasures) {
             for (int i = 0; i < treasures - treasuresCount; i++) {
-                int hx = diceRoll.nextInt(x-2);
-                int hy = diceRoll.nextInt(y-2);
+                int hx = diceRoll.nextInt(x - 2);
+                int hy = diceRoll.nextInt(y - 2);
                 if (hx == 0 && hy == 0) {
                     hx++;
-                }
-                else grid[hx][hy] = 'T';
+                } else grid[hx][hy] = 'T';
             }
         }
         if (monstersCount < monsters) {
             for (int i = 0; i < monsters - monstersCount; i++) {
-                int hx = diceRoll.nextInt(x-2);
-                int hy = diceRoll.nextInt(y-2);
+                int hx = diceRoll.nextInt(x - 2);
+                int hy = diceRoll.nextInt(y - 2);
                 if (hx == 0 && hy == 0) {
                     hx++;
-                }
-                else grid[hx][hy] = 'M';
+                } else grid[hx][hy] = 'M';
             }
         }
+
+        StringBuilder gridBuilder = new StringBuilder();
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                gridBuilder.append(grid[i][j]);
+            }
+            if (i == x - 1) {
+                break;
+            }
+            gridBuilder.append("/");
+        }
+
+        field = new Field(Arrays.stream(gridBuilder.toString().split("/")).toList(), x, y, level);
+        System.out.println(field);
     }
 
     public void fillValues(int level) {
@@ -91,8 +116,7 @@ public class Generator implements GenerateLevel {
             y = 10;
             monsters = 3;
             treasures = 2;
-        }
-        else if(level > 1) {
+        } else if (level > 1) {
             int hX = 15;
             int hY = 10;
             int hMonsters = 3;

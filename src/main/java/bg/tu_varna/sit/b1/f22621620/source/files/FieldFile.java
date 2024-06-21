@@ -9,8 +9,7 @@ public abstract class FieldFile {
     public FieldFile(String file) {
         if (file.contains(File.separator)) {
             this.file = file;
-        }
-        else {
+        } else {
             this.file = DEFAULT_PATH.concat(file);
         }
     }

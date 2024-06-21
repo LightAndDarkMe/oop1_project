@@ -8,7 +8,7 @@ import java.util.List;
 
 public class SaveAs implements ExecutableOperation {
     private final String DEFAULT_PATH = ".\\src\\main\\java\\bg\\tu_varna\\sit\\b1\\f22621620\\source\\files\\".replace("\\", File.separator);
-    private List<String> args;
+    private final List<String> args;
 
     public SaveAs(List<String> args) {
         this.args = args;

@@ -1,8 +1,8 @@
 package bg.tu_varna.sit.b1.f22621620.source.characters.playercharacter.inventory;
 
 import bg.tu_varna.sit.b1.f22621620.source.equipment.Armor;
-import bg.tu_varna.sit.b1.f22621620.source.equipment.Weapon;
 import bg.tu_varna.sit.b1.f22621620.source.equipment.Spell;
+import bg.tu_varna.sit.b1.f22621620.source.equipment.Weapon;
 
 public class Inventory {
     private Armor armor;
@@ -41,14 +41,13 @@ public class Inventory {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        return stringBuilder.append("Inventory: ")
-                .append("\n")
-                .append(armor)
-                .append(" | ")
-                .append(weapon)
-                .append(" | ")
-                .append(spell)
-                .toString();
+        String stringBuilder = "Inventory: " +
+                "\n" +
+                armor +
+                " | " +
+                weapon +
+                " | " +
+                spell;
+        return stringBuilder;
     }
 }

@@ -4,7 +4,6 @@ import bg.tu_varna.sit.b1.f22621620.source.field.Field;
 import bg.tu_varna.sit.b1.f22621620.source.files.FieldFile;
 import bg.tu_varna.sit.b1.f22621620.source.files.interfaces.Writable;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -1,23 +1,23 @@
 package bg.tu_varna.sit.b1.f22621620.source.equipment;
 
 public enum Weapon {
-    DAGGER ("Dagger", 0.20, 0),
-    LIGHTHAMMER ("Light Hammer", 0.20, 1),
-    SICKLE ("Sickle", 0.20, 1),
-    HANDAXE ("Handaxe", 0.25, 1),
-    MACE ("Mace", 0.25, 1),
-    QUARTERSTAFF ("Quarterstaff", 0.25, 1),
-    SPEAR ("Spear", 0.30, 1),
-    GREATCLUB ("Greatclub", 0.30, 1),
-    SHORTSWORD ("Shortsword", 0.30, 1),
-    SCIMITAR ("Scimitar", 0.30, 1),
-    LONGSWORD ("Longsword", 0.35, 2),
-    RAPIER ("Rapier", 0.35, 2),
-    WARHAMMER ("Warhammer", 0.40, 3),
-    BATTLEAXE ("Battleaxe", 0.40, 3),
-    HALBERD ("Halberd", 0.50, 4),
-    GREATAXE ("Greataxe", 0.50, 4),
-    GREATSWORD ("Greatsword", 0.50, 4);
+    DAGGER("Dagger", 0.20, 0),
+    LIGHTHAMMER("Light Hammer", 0.20, 1),
+    SICKLE("Sickle", 0.20, 1),
+    HANDAXE("Handaxe", 0.25, 1),
+    MACE("Mace", 0.25, 1),
+    QUARTERSTAFF("Quarterstaff", 0.25, 1),
+    SPEAR("Spear", 0.30, 1),
+    GREATCLUB("Greatclub", 0.30, 1),
+    SHORTSWORD("Shortsword", 0.30, 1),
+    SCIMITAR("Scimitar", 0.30, 1),
+    LONGSWORD("Longsword", 0.35, 2),
+    RAPIER("Rapier", 0.35, 2),
+    WARHAMMER("Warhammer", 0.40, 3),
+    BATTLEAXE("Battleaxe", 0.40, 3),
+    HALBERD("Halberd", 0.50, 4),
+    GREATAXE("Greataxe", 0.50, 4),
+    GREATSWORD("Greatsword", 0.50, 4);
 
     private final String weapon;
     private final double damage;
@@ -43,11 +43,10 @@ public enum Weapon {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        return stringBuilder.append("Weapon: ")
-                .append(weapon)
-                .append("; Damage: ")
-                .append(damage * 100)
-                .toString();
+        String stringBuilder = "Weapon: " +
+                weapon +
+                "; Damage: " +
+                damage * 100;
+        return stringBuilder;
     }
 }

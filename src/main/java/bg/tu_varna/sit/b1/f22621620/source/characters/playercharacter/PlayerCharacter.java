@@ -33,7 +33,7 @@ public class PlayerCharacter extends Character {
         return level;
     }
 
-//    Fix Later!!!
+    //    Fix Later!!!
     public void levelUp() {
         level++;
         for (int i = 0; i < 6; i++) {
@@ -57,23 +57,22 @@ public class PlayerCharacter extends Character {
     }
 
     public void creatureKill() {
-        if(getCurrentHealth() < getMaxHealth() / 2) {
+        if (getCurrentHealth() < getMaxHealth() / 2) {
             setCurrentHealth(getMaxHealth() / 2);
         }
     }
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        return stringBuilder.append("Player:\n")
-                .append(characterClass)
-                .append(" ")
-                .append(level)
-                .append("\n")
-                .append(super.toString())
-                .append("\n")
-                .append(inventory)
-                .toString();
+        String stringBuilder = "Player:\n" +
+                characterClass +
+                " " +
+                level +
+                "\n" +
+                super.toString() +
+                "\n" +
+                inventory;
+        return stringBuilder;
 
     }
 }

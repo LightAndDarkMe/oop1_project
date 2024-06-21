@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class Close implements ExecutableOperation {
     public void execute() throws FileNotFoundException {
-        if(Objects.isNull(GameData.getInstance().getFile())) {
+        if (Objects.isNull(GameData.getInstance().getFile())) {
             throw new FileNotFoundException("No file to open!");
         }
 

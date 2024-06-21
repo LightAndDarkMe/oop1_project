@@ -3,9 +3,7 @@ package bg.tu_varna.sit.b1.f22621620.source.operations;
 import bg.tu_varna.sit.b1.f22621620.source.operations.factory.OperationFactory;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class OperationController {
     private final OperationFactory operations = OperationFactory.getInstance();

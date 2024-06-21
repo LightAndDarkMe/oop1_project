@@ -2,9 +2,9 @@ package bg.tu_varna.sit.b1.f22621620.source.characters.playercharacter.enums;
 
 public enum CharacterClass {
     //Barbarian*, Bard, Cleric, Druid, Fighter*, Monk, Paladin, Ranger, Rogue, Sorcerer*, Warlock, Wizard, Artificer
-    FIGHTER ("Fighter", 30, 20, 50),
-    SORCERER ("Sorcerer", 10, 40, 50),
-    BARBARIAN ("Barbarian", 40, 10, 50);
+    FIGHTER("Fighter", 30, 20, 50),
+    SORCERER("Sorcerer", 10, 40, 50),
+    BARBARIAN("Barbarian", 40, 10, 50);
 
     private final String characterClass;
     private final int strength;
@@ -36,9 +36,8 @@ public enum CharacterClass {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        return stringBuilder.append("Class: ")
-                .append(characterClass)
-                .toString();
+        String stringBuilder = "Class: " +
+                characterClass;
+        return stringBuilder;
     }
 }
