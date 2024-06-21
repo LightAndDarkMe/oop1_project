@@ -62,6 +62,7 @@ public class Battle implements Combat, EndGame {
                         System.out.println("Wrong choice! Choose again: (Melee / Spell)");
                         //make him choose again or smth
                         //Fix this!
+                        //Make this into a new function and call it again from there; in a nutshell - recursion
                     }
                 }
                 turnPriority = 0;
@@ -102,6 +103,6 @@ public class Battle implements Combat, EndGame {
     public void EndGame() {
         System.out.println("YOU LOST!");
         System.out.println("Great Failure.");
-        OperationController.execute("exit");
+        System.exit(0);
     }
 }

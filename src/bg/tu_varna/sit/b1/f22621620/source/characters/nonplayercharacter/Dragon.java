@@ -6,15 +6,6 @@ public class Dragon extends Character {
     private final int level;
     private final double armorClass;
 
-    public Dragon() {
-        level = 1;
-        armorClass = 0.15;
-        setStrength(25);
-        setSpellcastingAbility(25);
-        setMaxHealth(50);
-        setCurrentHealth(50);
-    }
-
     public Dragon(int level) {
         this.level = level;
         armorClass = 0.05 + (level*0.10);

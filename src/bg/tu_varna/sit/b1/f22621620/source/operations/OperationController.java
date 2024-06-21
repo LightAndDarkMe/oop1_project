@@ -8,18 +8,9 @@ import java.util.List;
 import java.util.Map;
 
 public class OperationController {
-    private static final Map<Operation, OperationFactory> operations = new HashMap<>();
+    private final OperationFactory operations = OperationFactory.getInstance();
 
-    static {
-        operations.put(Operation.OPEN, OperationFactory.getInstance());
-        operations.put(Operation.EXIT, OperationFactory.getInstance());
-        operations.put(Operation.CLOSE, OperationFactory.getInstance());
-        operations.put(Operation.SAVE, OperationFactory.getInstance());
-        operations.put(Operation.SAVE_AS, OperationFactory.getInstance());
-        operations.put(Operation.HELP, OperationFactory.getInstance());
-    }
-
-    public static void execute(String operation) {
+    public void execute(String operation) {
         List<String> args = Arrays.stream(operation.split(" ")).toList();
 
         try {
@@ -37,14 +28,14 @@ public class OperationController {
 
             args = args.subList(index, args.size());
             Operation executable = Operation.valueOf(operation);
-            operations.get(executable).getOperation(executable, args).execute();
+            operations.getOperation(executable, args).execute();
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private static String parser(String input) {
+    private String parser(String input) {
         if (input.isBlank()) {
             return null;
         }
@@ -66,7 +57,7 @@ public class OperationController {
         return arg.toUpperCase();
     }
 
-    private static Boolean check(String input) {
+    private Boolean check(String input) {
         for (Operation operation : Operation.values()) {
             String operationTest = operation.getOperation();
             if (input.contains("_")) {
