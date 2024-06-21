@@ -26,7 +26,7 @@ public class Writer extends FieldFile implements Writable {
             printWriter.print("y=");
             printWriter.println(field.getY());
             printWriter.print("grid=");
-            printWriter.println(field.toString().replace("\n","/"));
+            printWriter.println(String.join("/", field.getGrid()));
             printWriter.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
