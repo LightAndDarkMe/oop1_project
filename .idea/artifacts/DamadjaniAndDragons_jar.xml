@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DamadjaniAndDragons:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DamadjaniAndDragons_jar</output-path>
+    <root id="archive" name="DamadjaniAndDragons.jar">
+      <element id="module-output" name="oop1_project" />
+    </root>
+  </artifact>
+</component>

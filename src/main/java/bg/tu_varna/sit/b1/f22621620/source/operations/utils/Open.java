@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Open implements ExecutableOperation {
+    private final String DEFAULT_PATH = ".\\src\\main\\java\\bg\\tu_varna\\sit\\b1\\f22621620\\source\\files\\".replace("\\", File.separator);
     private List<String> args;
 
     public Open(List<String> args) {
@@ -20,7 +21,7 @@ public class Open implements ExecutableOperation {
         if (args.size() != 1) {
             throw new RuntimeException("Syntax error, Should be: open <path>");
         }
-        File file = new File(args.get(0));
+        File file = new File((args.get(0).contains(File.separator)) ? args.get(0) : DEFAULT_PATH.concat(args.get(0)));
         if (!file.exists()) {
             try {
                 file.createNewFile();

@@ -1,6 +1,5 @@
 package bg.tu_varna.sit.b1.f22621620;
 
-import bg.tu_varna.sit.b1.f22621620.source.field.Field;
 import bg.tu_varna.sit.b1.f22621620.source.operations.OperationController;
 
 import java.util.Scanner;
