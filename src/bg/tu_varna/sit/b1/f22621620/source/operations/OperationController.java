@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class OperationController {
-    private static Map<Operation, OperationFactory> operations = new HashMap<>();
+    private static final Map<Operation, OperationFactory> operations = new HashMap<>();
 
     static {
         operations.put(Operation.OPEN, OperationFactory.getInstance());

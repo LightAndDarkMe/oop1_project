@@ -23,7 +23,9 @@ public class Generator implements GenerateLevel {
     public void generateLevel(int level) {
         fillValues(level);
 
+        //Create DiceRoll / CoinFlip classes instead of this thing
         Random diceRoll = new Random();
+        //Char Array => To List<String>
         char[][] grid = new char[x][y];
         grid[0][0] = 'P';
         grid[x-1][y-1] = 'X';

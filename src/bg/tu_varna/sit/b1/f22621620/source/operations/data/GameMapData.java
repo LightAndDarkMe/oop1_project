@@ -1,22 +1,21 @@
 package bg.tu_varna.sit.b1.f22621620.source.operations.data;
 
-import bg.tu_varna.sit.b1.f22621620.source.operations.interfaces.AppDataManager;
+import bg.tu_varna.sit.b1.f22621620.source.operations.interfaces.GameMapDataManager;
 
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Objects;
 
-public class AppData {
-    private static AppData instance = null;
+public class GameMapData {
+    private static GameMapData instance = null;
     private File file = null;
-    private AppDataManager appDataManager;
+    private GameMapDataManager appDataManager;
 
-    private AppData() {}
+    private GameMapData() {}
 
-    public static AppData getInstance() {
+    public static GameMapData getInstance() {
         if (instance == null) {
-            instance = new AppData();
+            instance = new GameMapData();
         }
         return instance;
     }

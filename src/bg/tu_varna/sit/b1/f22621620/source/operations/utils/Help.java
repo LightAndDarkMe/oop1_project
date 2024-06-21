@@ -1,10 +1,7 @@
-package bg.tu_varna.sit.b1.f22621620.source.operations.generic;
+package bg.tu_varna.sit.b1.f22621620.source.operations.utils;
 
 import bg.tu_varna.sit.b1.f22621620.source.operations.Operation;
 import bg.tu_varna.sit.b1.f22621620.source.operations.interfaces.ExecutableOperation;
-
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.FileNotFoundException;
 
 public class Help implements ExecutableOperation {
     @Override

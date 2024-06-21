@@ -4,9 +4,11 @@ import bg.tu_varna.sit.b1.f22621620.source.characters.Character;
 import bg.tu_varna.sit.b1.f22621620.source.characters.playercharacter.enums.CharacterClass;
 import bg.tu_varna.sit.b1.f22621620.source.characters.playercharacter.inventory.Inventory;
 
+import java.util.Scanner;
+
 public class PlayerCharacter extends Character {
-    private Inventory inventory;
-    private CharacterClass characterClass;
+    private final Inventory inventory;
+    private final CharacterClass characterClass;
     private int level;
 
     public PlayerCharacter(CharacterClass characterClass) {
@@ -35,10 +37,13 @@ public class PlayerCharacter extends Character {
     public void levelUp() {
         level++;
         for (int i = 0; i < 6; i++) {
+            Scanner scanner = new Scanner(System.in);
             System.out.println("Choose which stat to level up by 5 points: (STR / ABI / HP)");
-            //read the value - not relevant for now; fix later
-            String choice = "";
-            switch (choice) {
+            System.out.print("$ ");
+            String input = (scanner.nextLine()).toUpperCase();
+            System.out.println();
+
+            switch (input) {
                 case "STR" -> setStrength(getStrength() + 5);
                 case "ABI" -> setSpellcastingAbility(getSpellcastingAbility() + 5);
                 case "HP" -> setMaxHealth(getMaxHealth() + 5);
