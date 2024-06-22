@@ -25,10 +25,6 @@ public class PlayerCharacter extends Character {
         return inventory;
     }
 
-    public CharacterClass getCharacterClass() {
-        return characterClass;
-    }
-
     public int getLevel() {
         return level;
     }

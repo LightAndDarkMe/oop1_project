@@ -13,8 +13,4 @@ public abstract class FieldFile {
             this.file = DEFAULT_PATH.concat(file);
         }
     }
-
-    public String getFile() {
-        return file;
-    }
 }

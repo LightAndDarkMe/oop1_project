@@ -3,6 +3,7 @@ package bg.tu_varna.sit.b1.f22621620.source.operations.factory;
 import bg.tu_varna.sit.b1.f22621620.source.operations.Operation;
 import bg.tu_varna.sit.b1.f22621620.source.operations.admin.Generate;
 import bg.tu_varna.sit.b1.f22621620.source.operations.admin.Login;
+import bg.tu_varna.sit.b1.f22621620.source.operations.data.Stats;
 import bg.tu_varna.sit.b1.f22621620.source.operations.data.Visualize;
 import bg.tu_varna.sit.b1.f22621620.source.operations.gameplay.Play;
 import bg.tu_varna.sit.b1.f22621620.source.operations.gameplay.movement.Down;
@@ -42,6 +43,7 @@ public class OperationFactory {
             case LEFT -> new Left();
             case RIGHT -> new Right();
             case VISUALIZE -> new Visualize();
+            case STATS -> new Stats();
             case GENERATE -> new Generate(args);
             case LOGIN -> new Login(args);
         };

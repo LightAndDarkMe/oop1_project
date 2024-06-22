@@ -22,10 +22,6 @@ public enum Armor {
         this.level = level;
     }
 
-    public String getArmor() {
-        return armor;
-    }
-
     public double getArmorClass() {
         return armorClass;
     }
@@ -42,5 +38,20 @@ public enum Armor {
                 .append("; Armor Class: ")
                 .append(armorClass * 100)
                 .toString();
+    }
+
+    public static int getArmorCount(int level) {
+        if (level < 1) {
+            throw new RuntimeException("invalid level");
+        }
+
+        int count = 0;
+        for (Armor armor : Armor.values()) {
+            if (armor.level <= level) {
+                count++;
+            }
+        }
+
+        return count;
     }
 }

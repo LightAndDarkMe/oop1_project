@@ -29,10 +29,6 @@ public enum Weapon {
         this.level = level;
     }
 
-    public String getWeapon() {
-        return weapon;
-    }
-
     public double getDamage() {
         return damage;
     }
@@ -49,5 +45,20 @@ public enum Weapon {
                 .append("; Damage: ")
                 .append(damage * 100)
                 .toString();
+    }
+
+    public static int getWeaponCount(int level) {
+        if (level < 1) {
+            throw new RuntimeException("invalid level");
+        }
+
+        int count = 0;
+        for (Weapon weapon : Weapon.values()) {
+            if (weapon.level <= level) {
+                count++;
+            }
+        }
+
+        return count;
     }
 }

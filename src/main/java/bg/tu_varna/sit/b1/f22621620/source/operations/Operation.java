@@ -14,6 +14,7 @@ public enum Operation {
     LEFT("left", "Moves leftwards."),
     RIGHT("right", "Moves rightwards."),
     VISUALIZE("visualize", "Visualizes the current playing field."),
+    STATS("stats", "Visualizes the player's inventory and current stats."),
     GENERATE("generate", "Generates a new map if you have admin access. generate <level>"),
     LOGIN("login", "Logs into the admin account. login <password>");
 

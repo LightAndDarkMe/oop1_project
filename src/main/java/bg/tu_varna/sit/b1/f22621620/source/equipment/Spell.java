@@ -4,7 +4,7 @@ public enum Spell {
     //Cantrips:
     CHILLTOUCH("Chill Touch", 0.18, 0), //1d8
     ELDRITCHBLAST("Eldritch Blast", 0.30, 0), //1d10
-    FIREBOLT("Fire Бolt", 0.20, 0), //1d10
+    FIREBOLT("Fire Bolt", 0.20, 0), //1d10
     FROSTBITE("Frostbite", 0.15, 0), //1d6
     MINDSLIVER("Mind Sliver", 0.15, 0), //1d6
     POISONSPRAY("Poison Spray", 0.25, 0), //1d12
@@ -69,10 +69,6 @@ public enum Spell {
         this.level = level;
     }
 
-    public String getSpell() {
-        return spell;
-    }
-
     public double getDamage() {
         return damage;
     }
@@ -89,5 +85,20 @@ public enum Spell {
                 .append("; Damage: ")
                 .append(damage * 100)
                 .toString();
+    }
+
+    public static int getSpellCount(int level) {
+        if (level < 1) {
+            throw new RuntimeException("invalid level");
+        }
+
+        int count = 0;
+        for (Spell spell : Spell.values()) {
+            if (spell.level <= level) {
+                count++;
+            }
+        }
+
+        return count;
     }
 }

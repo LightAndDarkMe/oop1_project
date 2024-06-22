@@ -13,6 +13,9 @@ public class Dice implements DiceRoll {
 
     @Override
     public int rollDice(int sides) {
-        return Math.abs(diceRoll.nextInt(sides + 1));
+        int temp = diceRoll.nextInt();
+        temp = (temp < 0) ? temp * -1 : temp;
+        temp %= sides;
+        return temp + 1;
     }
 }

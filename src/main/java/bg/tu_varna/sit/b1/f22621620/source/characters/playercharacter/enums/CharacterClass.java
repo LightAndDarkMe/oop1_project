@@ -18,10 +18,6 @@ public enum CharacterClass {
         this.health = health;
     }
 
-    public String getCharacterClass() {
-        return characterClass;
-    }
-
     public int getStrength() {
         return strength;
     }

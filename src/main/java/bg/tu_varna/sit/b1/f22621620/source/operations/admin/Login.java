@@ -21,7 +21,7 @@ public class Login implements ExecutableOperation {
         if (args.size() != 1) {
             throw new RuntimeException("Syntax error, Should be: login <password>");
         }
-        if (!Objects.equals(args.get(0), "adminpass")) {
+        if (!Objects.equals(args.get(0), "I<3c++")) {
             throw new RuntimeException("Wrong password!");
         }
         GameData.getInstance().setAdmin(true);

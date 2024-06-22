@@ -109,7 +109,9 @@ public class Generator implements GenerateLevel {
 
         field = new Field(Arrays.stream(gridBuilder.toString().split("/")).toList(), x, y, level);
         GameData.getInstance().setCurrentField(field);
-        System.out.println(field);
+        GameData.getInstance().setPlayerPosX(0);
+        GameData.getInstance().setPlayerPosY(0);
+//        System.out.println(field);
     }
 
     public void fillValues(int level) {

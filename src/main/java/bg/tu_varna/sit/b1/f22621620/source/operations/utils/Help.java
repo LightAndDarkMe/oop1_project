@@ -7,7 +7,7 @@ public class Help implements ExecutableOperation {
     @Override
     public void execute() {
         for (Operation operation : Operation.values()) {
-            System.out.printf("%-20s%s\n", operation.getOperation().toUpperCase(), operation.getDescription());
+            System.out.printf("%-15s%s\n", operation.getOperation().toUpperCase(), operation.getDescription());
         }
     }
 }
