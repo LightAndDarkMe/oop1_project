@@ -43,10 +43,11 @@ public enum Weapon {
 
     @Override
     public String toString() {
-        String stringBuilder = "Weapon: " +
-                weapon +
-                "; Damage: " +
-                damage * 100;
-        return stringBuilder;
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Weapon: ")
+                .append(weapon)
+                .append("; Damage: ")
+                .append(damage * 100)
+                .toString();
     }
 }

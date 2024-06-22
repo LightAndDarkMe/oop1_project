@@ -36,10 +36,11 @@ public enum Armor {
 
     @Override
     public String toString() {
-        String stringBuilder = "Armor: " +
-                armor +
-                "; Armor Class: " +
-                armorClass * 100;
-        return stringBuilder;
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Armor: ")
+                .append(armor)
+                .append("; Armor Class: ")
+                .append(armorClass * 100)
+                .toString();
     }
 }

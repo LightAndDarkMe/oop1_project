@@ -2,6 +2,7 @@ package bg.tu_varna.sit.b1.f22621620.source.field.generator;
 
 import bg.tu_varna.sit.b1.f22621620.source.field.Field;
 import bg.tu_varna.sit.b1.f22621620.source.field.generator.interfaces.GenerateLevel;
+import bg.tu_varna.sit.b1.f22621620.source.operations.data.GameData;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -21,7 +22,7 @@ public class Generator implements GenerateLevel {
     }
 
     @Override
-    public void generateLevel(int level) {
+    public void generate(int level) {
         fillValues(level);
 
         //Create DiceRoll / CoinFlip classes instead of this thing
@@ -107,6 +108,7 @@ public class Generator implements GenerateLevel {
         }
 
         field = new Field(Arrays.stream(gridBuilder.toString().split("/")).toList(), x, y, level);
+        GameData.getInstance().setCurrentField(field);
         System.out.println(field);
     }
 

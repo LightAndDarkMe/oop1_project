@@ -40,16 +40,17 @@ public abstract class Character {
 
     @Override
     public String toString() {
-        String stringBuilder = "Stats: " +
-                "\n" +
-                "Strength: " +
-                strength +
-                " | Spellcasting Ability: " +
-                spellcastingAbility +
-                " | Max Health: " +
-                maxHealth +
-                " | Current Health: " +
-                currentHealth;
-        return stringBuilder;
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Stats: ")
+                .append("\n")
+                .append("Strength: ")
+                .append(strength)
+                .append(" | Spellcasting Ability: ")
+                .append(spellcastingAbility)
+                .append(" | Max Health: ")
+                .append(maxHealth)
+                .append(" | Current Health: ")
+                .append(currentHealth)
+                .toString();
     }
 }

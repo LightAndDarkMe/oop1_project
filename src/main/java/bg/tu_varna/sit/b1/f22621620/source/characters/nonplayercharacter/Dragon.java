@@ -25,12 +25,13 @@ public class Dragon extends Character {
 
     @Override
     public String toString() {
-        String stringBuilder = "Monster: Dragon " +
-                level +
-                "\n" +
-                super.toString() +
-                "\nArmor Class: " +
-                armorClass * 100;
-        return stringBuilder;
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Monster: Dragon ")
+                .append(level)
+                .append("\n")
+                .append(super.toString())
+                .append("\nArmor Class: ")
+                .append(armorClass * 100)
+                .toString();
     }
 }

@@ -83,10 +83,11 @@ public enum Spell {
 
     @Override
     public String toString() {
-        String stringBuilder = "Spell: " +
-                spell +
-                "; Damage: " +
-                damage * 100;
-        return stringBuilder;
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Spell: ")
+                .append(spell)
+                .append("; Damage: ")
+                .append(damage * 100)
+                .toString();
     }
 }

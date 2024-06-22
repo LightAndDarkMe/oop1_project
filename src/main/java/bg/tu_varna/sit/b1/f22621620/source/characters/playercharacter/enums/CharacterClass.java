@@ -36,8 +36,9 @@ public enum CharacterClass {
 
     @Override
     public String toString() {
-        String stringBuilder = "Class: " +
-                characterClass;
-        return stringBuilder;
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Class: ")
+                .append(characterClass)
+                .toString();
     }
 }

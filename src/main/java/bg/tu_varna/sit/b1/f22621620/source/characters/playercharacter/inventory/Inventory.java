@@ -41,13 +41,14 @@ public class Inventory {
 
     @Override
     public String toString() {
-        String stringBuilder = "Inventory: " +
-                "\n" +
-                armor +
-                " | " +
-                weapon +
-                " | " +
-                spell;
-        return stringBuilder;
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Inventory: ")
+                .append("\n")
+                .append(armor)
+                .append(" | ")
+                .append(weapon)
+                .append(" | ")
+                .append(spell)
+                .toString();
     }
 }

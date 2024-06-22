@@ -42,10 +42,6 @@ public class Field {
         this.grid = grid;
     }
 
-    public void visualize() {
-        System.out.println(this);
-    }
-
     @Override
     public String toString() {
         return String.join("\n", grid)

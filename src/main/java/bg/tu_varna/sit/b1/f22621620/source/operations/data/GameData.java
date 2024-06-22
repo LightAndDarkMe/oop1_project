@@ -11,6 +11,8 @@ public class GameData {
     private static GameData instance = null;
     private File file = null;
     private Field currentField;
+    private boolean isStarted = false;
+    private boolean isAdmin = false;
 
     private GameData() {
     }
@@ -36,6 +38,22 @@ public class GameData {
 
     public void setCurrentField(Field currentField) {
         this.currentField = currentField;
+    }
+
+    public boolean isStarted() {
+        return isStarted;
+    }
+
+    public void setStarted(boolean started) {
+        isStarted = started;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 
     public void load(File file) {

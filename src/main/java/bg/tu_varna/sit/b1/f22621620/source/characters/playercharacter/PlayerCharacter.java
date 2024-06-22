@@ -64,15 +64,16 @@ public class PlayerCharacter extends Character {
 
     @Override
     public String toString() {
-        String stringBuilder = "Player:\n" +
-                characterClass +
-                " " +
-                level +
-                "\n" +
-                super.toString() +
-                "\n" +
-                inventory;
-        return stringBuilder;
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Player:\n")
+                .append(characterClass)
+                .append(" ")
+                .append(level)
+                .append("\n")
+                .append(super.toString())
+                .append("\n")
+                .append(inventory)
+                .toString();
 
     }
 }
