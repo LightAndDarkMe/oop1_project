@@ -19,6 +19,7 @@ public class Generator implements GenerateLevel {
         y = 10;
         monsters = 2;
         treasures = 2;
+        field = null;
     }
 
     @Override
@@ -111,7 +112,6 @@ public class Generator implements GenerateLevel {
         GameData.getInstance().setCurrentField(field);
         GameData.getInstance().setPlayerPosX(0);
         GameData.getInstance().setPlayerPosY(0);
-//        System.out.println(field);
     }
 
     public void fillValues(int level) {

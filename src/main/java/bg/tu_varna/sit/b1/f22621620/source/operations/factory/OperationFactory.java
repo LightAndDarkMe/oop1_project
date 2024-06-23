@@ -38,10 +38,10 @@ public class OperationFactory {
             case EXIT -> new Exit();
 
             case PLAY -> new Play();
-            case UP -> new Up();
-            case DOWN -> new Down();
-            case LEFT -> new Left();
-            case RIGHT -> new Right();
+            case W -> new Up();
+            case A -> new Left();
+            case S -> new Down();
+            case D -> new Right();
             case VISUALIZE -> new Visualize();
             case STATS -> new Stats();
             case GENERATE -> new Generate(args);

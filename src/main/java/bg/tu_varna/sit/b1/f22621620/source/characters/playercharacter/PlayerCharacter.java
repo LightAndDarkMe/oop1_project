@@ -5,6 +5,7 @@ import bg.tu_varna.sit.b1.f22621620.source.characters.playercharacter.enums.Char
 import bg.tu_varna.sit.b1.f22621620.source.characters.playercharacter.inventory.Inventory;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class PlayerCharacter extends Character {
     private final Inventory inventory;
@@ -29,7 +30,6 @@ public class PlayerCharacter extends Character {
         return level;
     }
 
-    //    Fix Later!!!
     public void levelUp() {
         level++;
         for (int i = 0; i < 6; i++) {
@@ -50,11 +50,25 @@ public class PlayerCharacter extends Character {
             }
         }
         setCurrentHealth(getMaxHealth());
+
+        System.out.println(this);
+        System.out.println("New map is generating.");
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void creatureKill() {
         if (getCurrentHealth() < getMaxHealth() / 2) {
             setCurrentHealth(getMaxHealth() / 2);
+        }
+        System.out.println("Health after the battle: " + getCurrentHealth());
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 

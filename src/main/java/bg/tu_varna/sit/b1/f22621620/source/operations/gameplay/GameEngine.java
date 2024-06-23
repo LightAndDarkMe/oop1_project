@@ -88,7 +88,7 @@ public class GameEngine {
     }
 
     public void onWallCollision() {
-        throw new RuntimeException("no");
+        throw new RuntimeException("You cannot go through the wall!");
     }
 
     public void onExitCollision() {
