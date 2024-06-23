@@ -12,14 +12,12 @@ public class Generator implements GenerateLevel {
     private int y;
     private int monsters;
     private int treasures;
-    private Field field;
 
     public Generator() {
         x = 10;
         y = 10;
         monsters = 2;
         treasures = 2;
-        field = null;
     }
 
     @Override
@@ -73,7 +71,9 @@ public class Generator implements GenerateLevel {
         grid[0][0] = 'P';
         grid[x - 1][y - 1] = 'X';
 
-        conversion(grid, level);
+        GameData.getInstance().setCurrentField(conversion(grid, level));
+        GameData.getInstance().setPlayerPosX(0);
+        GameData.getInstance().setPlayerPosY(0);
     }
 
     private void fillValues(int level) {
@@ -111,7 +111,7 @@ public class Generator implements GenerateLevel {
         }
     }
 
-    private void conversion(char[][] grid, int level) {
+    private Field conversion(char[][] grid, int level) {
         StringBuilder gridBuilder = new StringBuilder();
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
@@ -123,9 +123,6 @@ public class Generator implements GenerateLevel {
             gridBuilder.append("/");
         }
 
-        field = new Field(Arrays.stream(gridBuilder.toString().split("/")).toList(), x, y, level);
-        GameData.getInstance().setCurrentField(field);
-        GameData.getInstance().setPlayerPosX(0);
-        GameData.getInstance().setPlayerPosY(0);
+        return new Field(Arrays.stream(gridBuilder.toString().split("/")).toList(), x, y, level);
     }
 }

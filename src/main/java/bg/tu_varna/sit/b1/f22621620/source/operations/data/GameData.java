@@ -2,12 +2,12 @@ package bg.tu_varna.sit.b1.f22621620.source.operations.data;
 
 import bg.tu_varna.sit.b1.f22621620.source.characters.playercharacter.PlayerCharacter;
 import bg.tu_varna.sit.b1.f22621620.source.exceptions.gameplay.FieldNotFoundException;
+import bg.tu_varna.sit.b1.f22621620.source.exceptions.operations.GameFileNotFoundException;
 import bg.tu_varna.sit.b1.f22621620.source.field.Field;
 import bg.tu_varna.sit.b1.f22621620.source.files.read.Reader;
 import bg.tu_varna.sit.b1.f22621620.source.files.write.Writer;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Objects;
 
 public class GameData {
@@ -32,10 +32,6 @@ public class GameData {
 
     public File getFile() {
         return file;
-    }
-
-    public void setFile(File file) {
-        this.file = file;
     }
 
     public Field getCurrentField() {
@@ -92,9 +88,9 @@ public class GameData {
         reader.read();
     }
 
-    public void unload() throws FileNotFoundException {
+    public void unload() {
         if (Objects.isNull(file)) {
-            throw new FileNotFoundException("File not found!");
+            throw new GameFileNotFoundException("No game file found!");
         }
         if (Objects.isNull(currentField)) {
             throw new FieldNotFoundException("Field not found!");
@@ -106,5 +102,13 @@ public class GameData {
     public void unload(File file) {
         Writer writer = new Writer(file.getAbsolutePath());
         writer.write(currentField);
+    }
+
+    public void reset() {
+        file = null;
+        currentField = null;
+        isStarted = false;
+        playerPosX = 0;
+        playerPosY = 0;
     }
 }

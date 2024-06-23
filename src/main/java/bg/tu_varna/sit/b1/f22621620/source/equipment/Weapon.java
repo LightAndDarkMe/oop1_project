@@ -45,7 +45,7 @@ public enum Weapon {
         return stringBuilder.append("Weapon: ")
                 .append(weapon)
                 .append("; Damage: ")
-                .append(damage * 100)
+                .append((int) (damage * 100))
                 .toString();
     }
 

@@ -38,7 +38,7 @@ public enum Armor {
         return stringBuilder.append("Armor: ")
                 .append(armor)
                 .append("; Armor Class: ")
-                .append(armorClass * 100)
+                .append((int) (armorClass * 100))
                 .toString();
     }
 

@@ -6,7 +6,7 @@ import bg.tu_varna.sit.b1.f22621620.source.operations.interfaces.ExecutableOpera
 public class Stats implements ExecutableOperation {
 
     @Override
-    public void execute() throws Exception {
+    public void execute() {
         if (!GameData.getInstance().isStarted()) {
             throw new GameNotStartedException("The game has not been started!");
         }

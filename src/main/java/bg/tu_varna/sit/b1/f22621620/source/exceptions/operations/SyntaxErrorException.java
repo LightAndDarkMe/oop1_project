@@ -1,6 +1,8 @@
 package bg.tu_varna.sit.b1.f22621620.source.exceptions.operations;
 
-public class SyntaxErrorException extends RuntimeException {
+import bg.tu_varna.sit.b1.f22621620.source.exceptions.OperationException;
+
+public class SyntaxErrorException extends OperationException {
     public SyntaxErrorException(String message) {
         super(message);
     }

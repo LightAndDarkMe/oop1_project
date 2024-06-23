@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.b1.f22621620.source.operations;
 
+import bg.tu_varna.sit.b1.f22621620.source.exceptions.GameException;
 import bg.tu_varna.sit.b1.f22621620.source.exceptions.operations.IllegalOperationException;
 import bg.tu_varna.sit.b1.f22621620.source.operations.factory.OperationFactory;
 
@@ -29,7 +30,7 @@ public class OperationController {
             Operation executable = Operation.valueOf(operation);
             operations.getOperation(executable, args).execute();
 
-        } catch (Exception e) {
+        } catch (GameException e) {
             System.out.println(e.getMessage());
         }
     }

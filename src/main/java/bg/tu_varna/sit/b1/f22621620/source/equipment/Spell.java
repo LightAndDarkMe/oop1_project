@@ -85,7 +85,7 @@ public enum Spell {
         return stringBuilder.append("Spell: ")
                 .append(spell)
                 .append("; Damage: ")
-                .append(damage * 100)
+                .append((int) (damage * 100))
                 .toString();
     }
 
