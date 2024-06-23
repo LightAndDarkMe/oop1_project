@@ -33,8 +33,8 @@ public class PlayerCharacter extends Character {
 
     public void levelUp() {
         level++;
+        Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 6; i++) {
-            Scanner scanner = new Scanner(System.in);
             System.out.println("Choose which stat to level up by 5 points: (STR / ABI / HP)");
             System.out.print("$ ");
             String input = (scanner.nextLine()).toUpperCase();

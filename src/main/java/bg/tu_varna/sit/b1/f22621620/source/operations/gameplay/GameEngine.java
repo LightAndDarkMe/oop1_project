@@ -57,9 +57,9 @@ public class GameEngine {
         }
 
         boolean flag;
+        Scanner scanner = new Scanner(System.in);
         do {
             System.out.println("You've found the legendary: " + (temp == 1 ? armor : (temp == 2 ? spell : weapon)) + ". Do you want to equip it? (Y/N)");
-            Scanner scanner = new Scanner(System.in);
             System.out.print("$ ");
             String input = scanner.nextLine().toUpperCase();
             System.out.println();

@@ -31,18 +31,10 @@ public class Reader extends FieldFile implements Readable {
             while ((line = bufferedReader.readLine()) != null) {
                 List<String> lineArgs = Arrays.stream(line.split("=")).toList();
                 switch (lineArgs.get(0)) {
-                    case "level" -> {
-                        level = Integer.parseInt(lineArgs.get(1));
-                    }
-                    case "x" -> {
-                        x = Integer.parseInt(lineArgs.get(1));
-                    }
-                    case "y" -> {
-                        y = Integer.parseInt(lineArgs.get(1));
-                    }
-                    case "grid" -> {
-                        grid = Arrays.stream(lineArgs.get(1).split("/")).toList();
-                    }
+                    case "level" -> level = Integer.parseInt(lineArgs.get(1));
+                    case "x" -> x = Integer.parseInt(lineArgs.get(1));
+                    case "y" -> y = Integer.parseInt(lineArgs.get(1));
+                    case "grid" -> grid = Arrays.stream(lineArgs.get(1).split("/")).toList();
                 }
             }
 

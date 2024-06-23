@@ -30,8 +30,8 @@ public class Battle implements Combat, EndGame {
         while (player.getCurrentHealth() > 0 && dragon.getCurrentHealth() > 0) {
             if (turnPriority == 2) {
                 boolean flag;
+                Scanner scanner = new Scanner(System.in);
                 do {
-                    Scanner scanner = new Scanner(System.in);
                     System.out.println("Player's turn. Choose your action: (Melee / Spell)");
                     System.out.print("$ ");
                     String input = (scanner.nextLine()).toUpperCase();

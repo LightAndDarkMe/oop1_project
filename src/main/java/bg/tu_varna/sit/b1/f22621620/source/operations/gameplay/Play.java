@@ -19,9 +19,9 @@ public class Play implements ExecutableOperation {
 
             boolean flag;
             PlayerCharacter player = null;
+            Scanner scanner = new Scanner(System.in);
             do {
                 System.out.println("Choose your class: (Fighter/Sorcerer/Barbarian)");
-                Scanner scanner = new Scanner(System.in);
                 System.out.print("$ ");
                 String input = scanner.nextLine().toUpperCase();
                 System.out.println();

@@ -9,8 +9,8 @@ public class Application {
         System.out.println("\033[0;95mDamadjani and Dragons [Public Beta]\n\u001B[0m");
         OperationController operationController = new OperationController();
 
+        Scanner scanner = new Scanner(System.in);
         do {
-            Scanner scanner = new Scanner(System.in);
             System.out.print("$ ");
             String input = scanner.nextLine();
             System.out.println();
