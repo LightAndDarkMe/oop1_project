@@ -6,6 +6,7 @@ import bg.tu_varna.sit.b1.f22621620.source.dice.Dice;
 import bg.tu_varna.sit.b1.f22621620.source.equipment.Armor;
 import bg.tu_varna.sit.b1.f22621620.source.equipment.Spell;
 import bg.tu_varna.sit.b1.f22621620.source.equipment.Weapon;
+import bg.tu_varna.sit.b1.f22621620.source.exceptions.gameplay.WallCollisionException;
 import bg.tu_varna.sit.b1.f22621620.source.field.generator.Generator;
 import bg.tu_varna.sit.b1.f22621620.source.operations.data.GameData;
 
@@ -55,7 +56,7 @@ public class GameEngine {
             }
         }
 
-        boolean flag = false;
+        boolean flag;
         do {
             System.out.println("You've found the legendary: " + (temp == 1 ? armor : (temp == 2 ? spell : weapon)) + ". Do you want to equip it? (Y/N)");
             Scanner scanner = new Scanner(System.in);
@@ -80,15 +81,13 @@ public class GameEngine {
                     System.out.println("The treasure was lost.");
                     flag = true;
                 }
-                default -> {
-                    flag = false;
-                }
+                default -> flag = false;
             }
         } while (!flag);
     }
 
     public void onWallCollision() {
-        throw new RuntimeException("You cannot go through the wall!");
+        throw new WallCollisionException("You cannot go through the wall!");
     }
 
     public void onExitCollision() {
@@ -96,6 +95,6 @@ public class GameEngine {
         gameData.getCurrentField().levelUp();
         System.out.println("You cleared the level! Embrace yourself for level " + gameData.getCurrentField().getLevel());
         Generator generator = new Generator();
-        generator.generate(gameData.getCurrentField().getLevel());
+        generator.generate_level(gameData.getCurrentField().getLevel());
     }
 }

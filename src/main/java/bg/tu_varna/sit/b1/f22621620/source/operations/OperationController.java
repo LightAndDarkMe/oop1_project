@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.b1.f22621620.source.operations;
 
+import bg.tu_varna.sit.b1.f22621620.source.exceptions.operations.IllegalOperationException;
 import bg.tu_varna.sit.b1.f22621620.source.operations.factory.OperationFactory;
 
 import java.util.Arrays;
@@ -19,7 +20,7 @@ public class OperationController {
             }
 
             if (!check(operation)) {
-                throw new Exception("Operation doesn't exist! Type \"help\" for all operations.");
+                throw new IllegalOperationException("Operation doesn't exist! Type \"help\" for all operations.");
             }
 
             int index = (operation.startsWith("SAVE_AS") ? 2 : 1);

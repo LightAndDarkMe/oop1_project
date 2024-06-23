@@ -5,6 +5,7 @@ import bg.tu_varna.sit.b1.f22621620.source.battle.interfaces.EndGame;
 import bg.tu_varna.sit.b1.f22621620.source.characters.nonplayercharacter.Dragon;
 import bg.tu_varna.sit.b1.f22621620.source.characters.playercharacter.PlayerCharacter;
 import bg.tu_varna.sit.b1.f22621620.source.dice.Dice;
+import bg.tu_varna.sit.b1.f22621620.source.exceptions.operations.InterruptedTimerException;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -28,7 +29,7 @@ public class Battle implements Combat, EndGame {
         System.out.println("Combat Begins!");
         while (player.getCurrentHealth() > 0 && dragon.getCurrentHealth() > 0) {
             if (turnPriority == 2) {
-                boolean flag = false;
+                boolean flag;
                 do {
                     Scanner scanner = new Scanner(System.in);
                     System.out.println("Player's turn. Choose your action: (Melee / Spell)");
@@ -65,7 +66,7 @@ public class Battle implements Combat, EndGame {
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                    throw new InterruptedTimerException(e.getMessage());
                 }
                 int roll = dice.rollDice(2);
                 switch (roll) {
@@ -94,7 +95,7 @@ public class Battle implements Combat, EndGame {
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            throw new InterruptedTimerException(e.getMessage());
         }
         System.exit(0);
     }
@@ -102,7 +103,7 @@ public class Battle implements Combat, EndGame {
     private void playerAttack(int statBonus, double damageBonus) {
         int damageDealt = (int) (statBonus * (damageBonus + 1));
         damageDealt = randomBehavior(damageDealt);
-        System.out.println("With Melee attack you are dealing: " + damageDealt + " damage");
+        System.out.println("With your attack you are dealing: " + damageDealt + " damage");
         int damageAfterCalculation = (int) (damageDealt * (1 - dragon.getArmorClass()));
         System.out.println("After the dragon's protection you dealt: " + damageAfterCalculation + " damage");
         dragon.setCurrentHealth((dragon.getCurrentHealth() - damageAfterCalculation));
@@ -111,7 +112,7 @@ public class Battle implements Combat, EndGame {
 
     private void dragonAttack(int damageDealt) {
         damageDealt = randomBehavior(damageDealt);
-        System.out.println("With Melee attack the dragon is dealing: " + damageDealt + " damage");
+        System.out.println("With his attack the dragon is dealing: " + damageDealt + " damage");
         int damageAfterCalculation = (int) (damageDealt * (1 - player.getInventory().getArmor().getArmorClass()));
         System.out.println("After your armor's protection the dragon dealt: " + damageAfterCalculation + " damage");
         player.setCurrentHealth((player.getCurrentHealth() - damageAfterCalculation));
@@ -127,11 +128,10 @@ public class Battle implements Combat, EndGame {
         int roll = dice.rollDice(20);
         if (roll == 20) {
             System.out.println("Critical Hit! Rolled a 20.");
-            damage*=2;
-        }
-        else if (roll == 1) {
+            damage *= 2;
+        } else if (roll == 1) {
             System.out.println("Critical Failure! Rolled a 1.");
-            damage=0;
+            damage = 0;
         }
 
         return damage;

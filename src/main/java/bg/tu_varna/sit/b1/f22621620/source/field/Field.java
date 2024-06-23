@@ -41,12 +41,13 @@ public class Field {
 
     @Override
     public String toString() {
-        return String.join("\n", grid)
-                .replaceAll("[PMTX#.]", "$0 ")
+        String string = String.join("\n", grid)
                 .replace("P", "\u001B[32mP\u001B[0m")  //green
                 .replace("M", "\u001B[31mM\u001B[0m")  //red
                 .replace("T", "\u001B[33mT\u001B[0m")  //yellow
                 .replace("#", "\033[1;37m#\u001B[0m")  //bold white
                 .replace("X", "\u001B[32mX\u001B[0m"); //green
+
+        return (level < 5) ? string.replaceAll("[PMTX#.]", "$0 ") : string;
     }
 }

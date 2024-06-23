@@ -1,7 +1,8 @@
 package bg.tu_varna.sit.b1.f22621620.source.equipment;
 
+import bg.tu_varna.sit.b1.f22621620.source.exceptions.operations.InvalidLevelException;
+
 public enum Armor {
-    NONE("No Armor", 0, 0),
     LEATHERARMOR("Leather Armor", 0.30, 1),
     STUDDEDLEATHERARMOR("Studded Leather Armor", 0.35, 1),
     CHAINSHIRT("Chain Shirt", 0.40, 2),
@@ -10,7 +11,8 @@ public enum Armor {
     HALFPLATE("Halfplate", 0.55, 3),
     CHAINMAIL("Chainmail", 0.60, 4),
     SPLINT("Splint", 0.65, 5),
-    PLATE("Plate Armor", 0.70, 6);
+    PLATE("Plate Armor", 0.70, 6),
+    NONE("No Armor", 0, 99);
 
     private final String armor;
     private final double armorClass;
@@ -42,7 +44,7 @@ public enum Armor {
 
     public static int getArmorCount(int level) {
         if (level < 1) {
-            throw new RuntimeException("invalid level");
+            throw new InvalidLevelException("Invalid level!");
         }
 
         int count = 0;

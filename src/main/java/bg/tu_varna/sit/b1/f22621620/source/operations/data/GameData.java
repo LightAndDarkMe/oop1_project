@@ -1,11 +1,13 @@
 package bg.tu_varna.sit.b1.f22621620.source.operations.data;
 
 import bg.tu_varna.sit.b1.f22621620.source.characters.playercharacter.PlayerCharacter;
+import bg.tu_varna.sit.b1.f22621620.source.exceptions.gameplay.FieldNotFoundException;
 import bg.tu_varna.sit.b1.f22621620.source.field.Field;
 import bg.tu_varna.sit.b1.f22621620.source.files.read.Reader;
 import bg.tu_varna.sit.b1.f22621620.source.files.write.Writer;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Objects;
 
 public class GameData {
@@ -90,12 +92,12 @@ public class GameData {
         reader.read();
     }
 
-    public void unload() {
+    public void unload() throws FileNotFoundException {
         if (Objects.isNull(file)) {
-            throw new RuntimeException("File not found!");
+            throw new FileNotFoundException("File not found!");
         }
         if (Objects.isNull(currentField)) {
-            throw new RuntimeException("Field not found!");
+            throw new FieldNotFoundException("Field not found!");
         }
         Writer writer = new Writer(file.getAbsolutePath());
         writer.write(currentField);

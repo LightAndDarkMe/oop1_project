@@ -1,5 +1,7 @@
 package bg.tu_varna.sit.b1.f22621620.source.equipment;
 
+import bg.tu_varna.sit.b1.f22621620.source.exceptions.operations.InvalidLevelException;
+
 public enum Spell {
     //Cantrips:
     CHILLTOUCH("Chill Touch", 0.18, 0), //1d8
@@ -89,7 +91,7 @@ public enum Spell {
 
     public static int getSpellCount(int level) {
         if (level < 1) {
-            throw new RuntimeException("invalid level");
+            throw new InvalidLevelException("Invalid level!");
         }
 
         int count = 0;

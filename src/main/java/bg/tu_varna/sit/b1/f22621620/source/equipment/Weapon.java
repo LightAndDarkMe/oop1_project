@@ -1,5 +1,7 @@
 package bg.tu_varna.sit.b1.f22621620.source.equipment;
 
+import bg.tu_varna.sit.b1.f22621620.source.exceptions.operations.InvalidLevelException;
+
 public enum Weapon {
     DAGGER("Dagger", 0.20, 0),
     LIGHTHAMMER("Light Hammer", 0.20, 1),
@@ -49,7 +51,7 @@ public enum Weapon {
 
     public static int getWeaponCount(int level) {
         if (level < 1) {
-            throw new RuntimeException("invalid level");
+            throw new InvalidLevelException("Invalid level!");
         }
 
         int count = 0;

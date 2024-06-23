@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.b1.f22621620.source.operations.utils;
 
+import bg.tu_varna.sit.b1.f22621620.source.exceptions.operations.SyntaxErrorException;
 import bg.tu_varna.sit.b1.f22621620.source.operations.data.GameData;
 import bg.tu_varna.sit.b1.f22621620.source.operations.interfaces.ExecutableOperation;
 
@@ -18,7 +19,7 @@ public class Open implements ExecutableOperation {
     @Override
     public void execute() {
         if (args.size() != 1) {
-            throw new RuntimeException("Syntax error, Should be: open <path>");
+            throw new SyntaxErrorException("Syntax error! Should be: open <path>");
         }
         File file = new File((args.get(0).contains(File.separator)) ? args.get(0) : DEFAULT_PATH.concat(args.get(0)));
         if (!file.exists()) {

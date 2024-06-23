@@ -3,6 +3,7 @@ package bg.tu_varna.sit.b1.f22621620.source.characters.playercharacter;
 import bg.tu_varna.sit.b1.f22621620.source.characters.Character;
 import bg.tu_varna.sit.b1.f22621620.source.characters.playercharacter.enums.CharacterClass;
 import bg.tu_varna.sit.b1.f22621620.source.characters.playercharacter.inventory.Inventory;
+import bg.tu_varna.sit.b1.f22621620.source.exceptions.operations.InterruptedTimerException;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -52,11 +53,11 @@ public class PlayerCharacter extends Character {
         setCurrentHealth(getMaxHealth());
 
         System.out.println(this);
-        System.out.println("New map is generating.");
+        System.out.println("New map is generating...");
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            throw new InterruptedTimerException(e.getMessage());
         }
     }
 
@@ -68,7 +69,7 @@ public class PlayerCharacter extends Character {
         try {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            throw new InterruptedTimerException(e.getMessage());
         }
     }
 
