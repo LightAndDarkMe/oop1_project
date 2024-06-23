@@ -68,8 +68,7 @@ public class Generator implements GenerateLevel {
             fillMissingValues(grid, (monsters - monstersCount), 'M');
         }
 
-        grid[0][0] = 'P';
-        grid[x - 1][y - 1] = 'X';
+        setBorders(grid);
 
         GameData.getInstance().setCurrentField(conversion(grid, level));
         GameData.getInstance().setPlayerPosX(0);
@@ -109,6 +108,16 @@ public class Generator implements GenerateLevel {
             int hy = dice.rollDice(y - 1);
             grid[hx][hy] = c;
         }
+    }
+
+    private void setBorders(char[][] grid) {
+        grid[0][0] = 'P';
+        grid[x - 1][y - 1] = 'X';
+        grid[0][1] = (grid[0][1] == '#') ? '.' : grid[0][1];
+        grid[1][0] = (grid[1][0] == '#') ? '.' : grid[1][0];
+        grid[x - 1][y - 2] = (grid[x - 1][y - 2] == '#') ? '.' : grid[x - 1][y - 2];
+        grid[x - 2][y - 1] = (grid[x - 2][y - 1] == '#') ? '.' : grid[x - 2][y - 1];
+
     }
 
     private Field conversion(char[][] grid, int level) {
